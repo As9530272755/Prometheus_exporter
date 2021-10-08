@@ -1,0 +1,26 @@
+# 数据库配置
+mysql:
+  host: 10.0.0.3
+  port: 3306
+  username: root
+  password: "123456"
+  db: mysql
+
+# web 配置
+web:
+  # 默认地址为 9090
+  addr:
+  auth:
+    username: admin
+    password: "$2a$10$zpc7sIKlzk6G5G/IYfjPOOhmFryD6IwSplOJWUhsoZvcOdb/HrayS"
+
+# log 配置
+# 默认日志路径当前路径下 log/mysql_exporter.log
+# 日志级别共有 panic fatal error warn info debug trace 7 个级别
+log: 
+  filename: log/mysql_exporter.log
+  max_age: 0
+  max_size: 1
+  max_backups: 14
+  compress: false
+  level: debug

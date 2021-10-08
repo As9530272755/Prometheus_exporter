@@ -2,6 +2,7 @@ package collectors
 
 import (
 	"database/sql"
+	"mysql_exporter/logs"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
@@ -19,10 +20,12 @@ func (c *SlowQueriesCollector) Describe(desc chan<- *prometheus.Desc) {
 
 // 对慢查询指标采集数据
 func (c *SlowQueriesCollector) Collect(metric chan<- prometheus.Metric) {
+	slow := c.status("slow_queries")
+	logs.WithFields("slow_queries", slow)
 	metric <- prometheus.MustNewConstMetric(
-		c.slowDesc,               // 采集监控指标
-		prometheus.CounterValue,  // 指标类型为 counter 对递增、递减的指标进行采集
-		c.status("slow_queries"), // 采集慢查询指标的值
+		c.slowDesc,              // 采集监控指标
+		prometheus.CounterValue, // 指标类型为 counter 对递增、递减的指标进行采集
+		slow,                    // 采集慢查询指标的值
 	)
 }
 
@@ -53,10 +56,13 @@ func (c *QpsCollector) Describe(descs chan<- *prometheus.Desc) {
 
 // 采集当前执行 sql 语句监控指标
 func (c *QpsCollector) Collect(metric chan<- prometheus.Metric) {
+	queries := c.status("Queries")
+	logs.WithFields("queries", queries)
+
 	metric <- prometheus.MustNewConstMetric(
 		c.desc,                  // 采集监控指标
 		prometheus.CounterValue, // 采集数据类型
-		c.status("Queries"),     // 采集当前执行 sql 语句指标的值
+		queries,                 // 采集当前执行 sql 语句指标的值
 	)
 }
 

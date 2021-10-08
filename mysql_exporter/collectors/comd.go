@@ -2,6 +2,7 @@ package collectors
 
 import (
 	"database/sql"
+	"mysql_exporter/logs"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
@@ -21,6 +22,9 @@ func (c *CommandCollector) Collect(metric chan<- prometheus.Metric) {
 	// 采集 insert,delete,update,select 语句
 	sqlCmd := []string{"com_insert", "com_delete", "com_update", "com_select"}
 	for _, sql := range sqlCmd {
+
+		// 添加 debug 信息
+		logs.WithFields("sql_CMD", sql)
 		metric <- prometheus.MustNewConstMetric(c.desc, prometheus.CounterValue, c.status(sql), sql)
 	}
 }

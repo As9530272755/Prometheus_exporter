@@ -2,6 +2,7 @@ package collectors
 
 import (
 	"database/sql"
+	"mysql_exporter/logs"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
@@ -22,18 +23,27 @@ func (c *ConnectionCollector) Describe(desc chan<- *prometheus.Desc) {
 
 // 采集监控指标
 func (c *ConnectionCollector) Collect(metric chan<- prometheus.Metric) {
+	Threads_connected := c.status("Threads_connected")
+
+	// 调用监控项日志
+	logs.WithFields("Threads_connected", Threads_connected)
+
 	// 当前链接数指标
 	metric <- prometheus.MustNewConstMetric(
-		c.connectedDesc,               // 采集监控指标
-		prometheus.CounterValue,       // 采集值类型
-		c.status("Threads_connected"), // 采集 “已连接的线程” 监控指标
+		c.connectedDesc,         // 采集监控指标
+		prometheus.CounterValue, // 采集值类型
+		Threads_connected,       // 采集 “已连接的线程” 监控指标
 	)
 
+	max_connections := c.variable("max_connections")
+
+	// 调用监控项日志
+	logs.WithFields("max_connections", max_connections)
 	// 最大链接数指标
 	metric <- prometheus.MustNewConstMetric(
 		c.maxconnectedDesc,
 		prometheus.CounterValue,
-		c.variable("max_connections"),
+		max_connections,
 	)
 }
 
