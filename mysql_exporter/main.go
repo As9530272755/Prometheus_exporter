@@ -27,15 +27,9 @@ func main() {
 	// 通过 options 解析配置文件得到 user 授权信息
 	user := map[string]string{options.Web.Auth.UserName: options.Web.Auth.Password}
 
-	// 通过 options 解析配置文件得到日志信息
-	logs.MysqlLog(
-		options.Log.FileName,
-		options.Log.Level,
-		options.Log.Max_age,
-		options.Log.Max_size,
-		options.Log.Max_backups,
-		options.Log.Compress,
-	)
+	// 通过 options 解析配置文件得到日志信息,并接受 close 返回值因为我们需要在 main 程序中延迟关闭
+	logClose := logs.MysqlLog(options.Log)
+	defer logClose()
 
 	// 通过 options 解析配置文件得到 dsn 信息
 	dsn := fmt.Sprintf(
