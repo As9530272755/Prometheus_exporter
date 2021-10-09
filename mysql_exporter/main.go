@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"mysql_exporter/collectors"
 	"mysql_exporter/handler"
 	"mysql_exporter/linkmysql"
@@ -32,16 +31,13 @@ func main() {
 	defer logClose()
 
 	// 通过 options 解析配置文件得到 dsn 信息
-	dsn := fmt.Sprintf(
-		"%s:%s@tcp(%s:%s)/%s",
-		options.MySql.UserName,
-		options.MySql.Password,
-		options.MySql.Host,
-		options.MySql.Port,
-		options.MySql.DB)
-	fmt.Println(dsn)
+
 	// 链接数据库
-	db := linkmysql.LinkDB(dsn)
+	db, err := linkmysql.LinkDB(options.MySql)
+	if err != nil {
+		logrus.Fatal(err)
+		return
+	}
 
 	// 调用 MysqlUp 监控指标
 	collectors.MysqlUp(db, options.MySql.Host, options.MySql.Port)
