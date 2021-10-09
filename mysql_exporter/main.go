@@ -1,10 +1,10 @@
 package main
 
 import (
-	"mysql_exporter/collectors"
 	"mysql_exporter/handler"
 	"mysql_exporter/linkmysql"
 	"mysql_exporter/logs"
+	"mysql_exporter/monitor"
 	"net/http"
 
 	"mysql_exporter/config"
@@ -27,35 +27,18 @@ func main() {
 	user := map[string]string{options.Web.Auth.UserName: options.Web.Auth.Password}
 
 	// 通过 options 解析配置文件得到日志信息,并接受 close 返回值因为我们需要在 main 程序中延迟关闭
-	logClose := logs.MysqlLog(options.Log)
+	logClose := logs.InitMysqlLog(options.Log)
 	defer logClose()
 
 	// 通过 options 解析配置文件得到 dsn 信息
-
 	// 链接数据库
-	db, err := linkmysql.LinkDB(options.MySql)
+	db, err := linkmysql.InitLinkDB(options.MySql)
 	if err != nil {
 		logrus.Fatal(err)
 		return
 	}
 
-	// 调用 MysqlUp 监控指标
-	collectors.MysqlUp(db, options.MySql.Host, options.MySql.Port)
-
-	// 调用慢查询监控指标
-	collectors.SlowQueriesRegister(db)
-
-	// 调用 qps 语句监控指标
-	collectors.QpsRegister(db)
-
-	// 调用 sql 执行语句监控指标
-	collectors.CommandRegister(db)
-
-	// 调用连接数监控项
-	collectors.ConnectionRegister(db)
-
-	// 调用流量监测监控项
-	collectors.FlowRegister(db)
+	monitor.MonitorController(db, *options)
 
 	// 3.暴露指标,并且通过 auth 先进行验证是否通过验证，通过这访问 Prometheus 的 metrics
 	http.Handle("/metrics/", handler.Auth(promhttp.Handler(), user))
