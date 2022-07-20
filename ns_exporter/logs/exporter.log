@@ -1,0 +1,12 @@
+time="2022-07-20T22:15:32+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=
+time="2022-07-20T22:16:28+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=
+time="2022-07-20T22:16:28+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=
+time="2022-07-20T22:16:29+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=
+time="2022-07-20T22:16:29+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=
+time="2022-07-20T22:16:29+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:16:29+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:16:29+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:16:30+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:16:30+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:16:30+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=test4
+time="2022-07-20T22:18:26+08:00" level=info msg=Kube_Exporter func=kube_expoter/controller.PrometheusCotroller.func1 file="/root/go/src/cicc/prometheus/kube_expoter/controller/ns_controller.go:72" DeleteNS=

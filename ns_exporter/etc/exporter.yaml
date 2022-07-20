@@ -1,0 +1,18 @@
+# Kubeconfig path
+kubeconfig:
+  path: etc/config 
+
+# web addr The default address is 8889
+web:
+  port: 8889
+
+# Log configuration
+# Default log path logs/exporter.log
+# There are seven log levels: panic fatal error warn info debug trace
+log: 
+  filename: logs/exporter.log
+  max_age: 14
+  max_size: 10
+  max_backups: 14
+  compress: false
+  level: info
