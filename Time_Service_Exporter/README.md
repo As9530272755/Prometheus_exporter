@@ -35,13 +35,13 @@ log:
 
 http://10.0.0.135:19090/metrics
 
-![image-20230412173307594](ntp-exporter 开发.assets/image-20230412173307594.png)
+![images](https://github.com/As9530272755/Prometheus_exporter/blob/v1.0.beta/Time_Service_Exporter/image-20230412173307594.png)
 
 
 
 4 Prometheus view docked
 
-![image-20230412173444276](ntp-exporter 开发.assets/image-20230412173444276.png)
+![images](https://github.com/As9530272755/Prometheus_exporter/blob/v1.0.beta/Time_Service_Exporter/image-20230412173444276.png)
 
 
 
