@@ -47,7 +47,7 @@ http://10.0.0.135:19090/metrics
 
 5 alertmanager 
 
-![image-20230412173518738](ntp-exporter 开发.assets/image-20230412173518738.png)
+![images](https://github.com/As9530272755/Prometheus_exporter/blob/v1.0.beta/Time_Service_Exporter/image-20230412173518738.png)
 
 
 
@@ -62,10 +62,10 @@ http://10.0.0.135:19090/metrics
 
 7 alerts have turned red
 
-![image-20230412173833216](ntp-exporter 开发.assets/image-20230412173833216.png)
+![images](https://github.com/As9530272755/Prometheus_exporter/blob/v1.0.beta/Time_Service_Exporter/image-20230412173833216.png)
 
 
 
 8 Enterprise WeChat Receiving Alarm
 
-![image-20230412173842108](ntp-exporter 开发.assets/image-20230412173842108.png)
+![images](https://github.com/As9530272755/Prometheus_exporter/blob/v1.0.beta/Time_Service_Exporter/image-20230412173842108.png)
