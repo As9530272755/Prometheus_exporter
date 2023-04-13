@@ -1,0 +1,16 @@
+# 数据库配置
+service:
+  name: "systemd-timesyncd"
+  config_path: "/etc/systemd/timesyncd.conf"
+
+# web 配置
+web:
+  # 默认地址为 19090
+  addr:
+
+# log 配置
+# 默认日志路径当前路径下 log/time_exporter.log
+# 日志级别共有 panic fatal error warn info debug trace 7 个级别
+log: 
+  filename: log/time_exporter.log
+  max_age: 10
