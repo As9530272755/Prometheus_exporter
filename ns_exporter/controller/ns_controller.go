@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"kube_expoter/ex_config"
 	"kube_expoter/linkKube"
 	"time"
@@ -61,7 +62,7 @@ func PrometheusCotroller(optins *ex_config.Optins) {
 		defer func(logger *lumberjack.Logger) {
 			err := logger.Close()
 			if err != nil {
-
+				_ = fmt.Errorf("error: %s", err.Error())
 			}
 		}(&logger)
 
