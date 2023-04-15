@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"kube_expoter/ex_config"
 	"kube_expoter/linkKube"
 	"time"
@@ -16,7 +17,7 @@ import (
 func PrometheusCotroller(optins *ex_config.Optins) {
 	namespace := ""
 	prometheus.MustRegister(prometheus.NewGaugeFunc(prometheus.GaugeOpts{
-		Name:        "namespaace",
+		Name:        "namespace",
 		Namespace:   "kube_delete",
 		Help:        "This is a deleted namespace",
 		ConstLabels: prometheus.Labels{"Namespace": "Delete_Operation"},
@@ -58,7 +59,12 @@ func PrometheusCotroller(optins *ex_config.Optins) {
 			MaxSize:  optins.Log.Max_size,
 		}
 
-		defer logger.Close()
+		defer func(logger *lumberjack.Logger) {
+			err := logger.Close()
+			if err != nil {
+				_ = fmt.Errorf("error: %s", err.Error())
+			}
+		}(&logger)
 
 		logLevel, _ := logrus.ParseLevel(optins.Log.Level)
 
