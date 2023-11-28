@@ -1,0 +1,1 @@
+nohup /root/goProject/src/kube_hostpath/hostpath_exporter > myout.file 2>&1
