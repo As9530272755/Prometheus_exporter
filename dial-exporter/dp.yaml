@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dial-exporter
+  namespace: test-vm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dial-exporter
+  template:
+    metadata:
+      labels:
+        app: dial-exporter
+    spec:
+      containers:
+      - name: dial-exporter
+        image: nfs_exporter:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9120
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 2Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        volumeMounts:
+        - name: config-volume
+          mountPath: /root/config.yaml
+          subPath: config.yaml
+      volumes:
+      - name: config-volume
+        configMap:
+          name: dial-exporter-config

@@ -1,0 +1,9 @@
+exporter:
+  port: 9090
+
+http:
+  # 如果不是 443和80 URL+指定PORT
+  url: "https://www.baidu.com:443"
+
+tcp:
+  server: "10.0.0.200:2049"
